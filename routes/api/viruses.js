@@ -66,4 +66,26 @@ router.post('/', function(req, res, next) {
    
 });
 
+// Update a virus record 
+// router.put('/', function(req, res, next) {
+//     var body = JSON.parse(JSON.stringify(req.body)),
+//         species_name = body.species_name,
+//         discoveries = body.entries;
+    
+//     console.log(`Received = `, body);
+
+//     var record = new Virus();
+//         record.species_name = species_name;
+//         record.discoveries = discoveries;
+
+//     var query = { 'species_name': species_name };
+
+//     var data = { species_name: species_name+'bla' };
+
+//     Virus.findOneAndUpdate(query, data, {useFindAndModify: false, new: true}, function(err, updated_record) {
+//         console.log(`Record updated:`, updated_record);
+//     });
+   
+// });
+
 module.exports = router;

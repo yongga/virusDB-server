@@ -50,7 +50,17 @@ virusSchema.statics.getVirusByKeyword = function(virus_id, cb) {
                 .toJSON;
 }
 
+// Check if the virus exists before saving
+virusSchema.pre('save', async function(doc, next) {
+    console.log(`This is the to-be-saved doc \n`, doc);
+
+    var existingSpecies = this.model.findOne({'species_name': doc.species_name});
+
+    console.log(`Found existing species %s with %d records`, existingSpecies.species_name, existingSpecies.discoveries.length);
+});
+
+
 // export Virus.js as a user db model
-  // 1st arg: explicit virus model name
-  // 3rd arg: explicit collection title
-  module.exports = mongoose.model('Virus', virusSchema, 'viruses');
+// 1st arg: explicit virus model name
+// 3rd arg: explicit collection title
+module.exports = mongoose.model('Virus', virusSchema, 'viruses');

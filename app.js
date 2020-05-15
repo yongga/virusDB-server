@@ -10,6 +10,7 @@ const mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 var virusesRouter = require('./routes/api/viruses');
+var dataRouter = require('./routes/datapop');
 
 // const config = require('./config');
 
@@ -46,6 +47,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'jade');
 
 app.use('/', indexRouter);
+app.use('/data', dataRouter);
 app.use('/api/viruses', virusesRouter);
 
 // catch 404 and forward to error handler
